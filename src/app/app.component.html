@@ -1,9 +1,16 @@
-<ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+<ngx-slider 
+  [(value)]="minValue" 
+  [(highValue)]="maxValue"
+  [options]="options" 
+  formControlName="sliderControl" 
+  [options]="options"
+  (valueChange)="filter($event)">
+</ngx-slider>
 
-<form *ngFor="let value of objeto">
+<form formControlName="sliderControl" *ngFor="let value of objeto"><br>
   <div class="card">
     <div class="container">
-
+      <img src={{value.img}} alt="perfil">
       <p>Aplicação Inicial: {{value.AplicacaoInicial}}</p>
     </div>
 
