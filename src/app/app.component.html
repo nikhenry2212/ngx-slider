@@ -7,12 +7,17 @@
   (valueChange)="filter($event)">
 </ngx-slider>
 
-<form formControlName="sliderControl" *ngFor="let value of objeto"><br>
-  <div class="card">
-    <div class="container">
-      <img src={{value.img}} alt="perfil">
-      <p>Aplicação Inicial: {{value.AplicacaoInicial}}</p>
-    </div>
+<div class="row">
 
-  </div>
-</form>
+  <form formControlName="sliderControl" *ngFor="let value of objeto"><br>
+    <div class="card">
+      <div class="container">
+        <img src={{value.img}} alt="perfil">
+        <h1>Dominio: {{value.title}}</h1>
+        <p>Aplicação Inicial: </p>
+        <p> {{ value.AplicacaoInicial | currency : "BRL"}}</p>
+      </div>
+  
+    </div>
+  </form>
+</div>
