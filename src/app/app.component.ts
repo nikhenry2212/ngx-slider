@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
     sliderControl: new FormControl([20, 80])
   });
 
-  aplicacaoInicial: String[] = []
+  objetoNovo: any[] = []
 
   constructor() { }
   objeto: any = [
@@ -42,29 +42,20 @@ export class AppComponent implements OnInit {
     }
   };
 
-  // filter(event: any) {
-  //   let dataArray: ObjectModel = [];
-  //     this.objeto.map((event:ObjectModel) => {
-  //     let dataArray = event.data
-  //     console.log(dataArray);
-      
-  //     // console.log('dataArray', dataArray)
-      
-  //   }
-  // )
-// 
 
 
-  // }
   filter(event: any) {
-    let novoArray:any = []
-    this.objeto.map((x:any) => ( x.AplicacaoInicial > this.minValue &&  x.AplicacaoInicial < this.maxValue ? novoArray.push(x) : undefined));
-    // console.log(dataArray);
-    console.log('if novo',novoArray);
+    let novoArray: any = []
+    this.objetoNovo = this.objeto.map((x: any) => {
+      (x.AplicacaoInicial >= this.minValue &&
+        x.AplicacaoInicial <= this.maxValue ?
+        novoArray.push(x) : undefined)
+    });
+    this.objetoNovo = novoArray;
+    console.log(this.objetoNovo);
+    console.log(this.objeto);
   }
-
-
   ngOnInit() {
-
+    this.objetoNovo = this.objeto
   }
 }
