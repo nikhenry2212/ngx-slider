@@ -1,15 +1,19 @@
-<ngx-slider 
-  [(value)]="minValue" 
-  [(highValue)]="maxValue"
-  [options]="options" 
-  formControlName="sliderControl" 
-  [options]="options"
-  (valueChange)="filter($event)">
-</ngx-slider>
+<div class="custom-slider">
+  <ngx-slider 
+    [(value)]="value" 
+    [(highValue)]="maxValue"
+    [options]="options" 
+    (valueChange)="filter($event)">
+  </ngx-slider>
 
+</div>
+<div class="container-button" *ngIf="objetoNovo < 1 ">
+  <p class="warning">Lista não encontrada</p>
+  <button  style="cursor: pointer;" (click)="reset()">Voltar</button>
+</div>
 <div class="row">
 
-  <form formControlName="sliderControl" *ngFor="let value of objetoNovo"><br>
+  <form *ngFor="let value of objetoNovo"><br>
     <div class="card">
       <div class="container">
         <img src={{value.img}} alt="perfil">
