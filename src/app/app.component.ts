@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Options } from '@angular-slider/ngx-slider';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ObjectModel } from './objeto.model';
 
 
@@ -14,6 +14,11 @@ export class AppComponent implements OnInit {
     sliderControl: new FormControl([20, 80])
   });
 
+  cadastro: FormGroup = new FormGroup({
+    title: new FormControl('', [Validators.required]),
+    AplicacaoInicial: new FormControl([Validators.required]),
+    img: new FormControl('',[Validators.required])
+  })
   objetoNovo: any = []
 
   constructor() { }
@@ -36,10 +41,15 @@ export class AppComponent implements OnInit {
     logScale: true,
 
     translate: (value: number,): string => {
-      return  '' + Math.round(value).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
+      return '' + Math.round(value).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })
     }
 
   };
+
+  cadastrar() {
+    this.objetoNovo.push(this.cadastro.value);
+    console.log(this.objetoNovo);
+  }
 
   filter(event: any) {
     setTimeout(() => {
@@ -62,7 +72,7 @@ export class AppComponent implements OnInit {
     // console.log(this.objetoNovo);
     // console.log(this.objeto);
   }
-  reset(){
+  reset() {
     this.value = 0
     this.maxValue = 1000000000;
   }

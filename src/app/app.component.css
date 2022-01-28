@@ -1,42 +1,43 @@
-.card{
-
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  min-width: 80%;
-  max-width: 97%;
-  min-height: 100%;
-  max-height: 100%;
-  border-radius: 5px;
-  text-align: center;
-  background-color: rgb(29, 27, 27);
-  color: white; 
-
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    min-width: 80%;
+    max-width: 97%;
+    min-height: 100%;
+    max-height: 100%;
+    border-radius: 5px;
+    text-align: center;
+    background-color: rgb(29, 27, 27);
+    color: white;
 }
-img{
-    width:150px;
+
+img {
+    width: 150px;
     border-radius: 50%;
 }
+
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
-  
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
 .container {
     padding: 50px;
 }
 
-.row{
-  display:flex;
-  justify-content: space-between;
-  flex-direction: row;
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
 }
 
-.container-button{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.container-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-  button, button::after {
+#button-reset,
+button::after {
     width: 380px;
     height: 86px;
     font-size: 36px;
@@ -49,16 +50,15 @@ img{
     box-shadow: 6px 0px 0px #00E6F6;
     outline: transparent;
     position: relative;
-  }
-  
-  button::after {
+}
+
+button::after {
     --slice-0: inset(50% 50% 50% 50%);
     --slice-1: inset(80% -6px 0 0);
     --slice-2: inset(50% -6px 30% 0);
     --slice-3: inset(10% -6px 85% 0);
     --slice-4: inset(40% -6px 43% 0);
     --slice-5: inset(80% -6px 5% 0);
-    
     content: 'AVAILABLE NOW';
     display: block;
     position: absolute;
@@ -69,68 +69,120 @@ img{
     background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
     text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
     clip-path: var(--slice-0);
-  }
-  
-  button:hover::after {
+}
+
+#button-reset:hover::after {
     animation: 1s glitch;
     animation-timing-function: steps(2, end);
-  }
-  
-  @keyframes glitch {
+}
+
+@keyframes glitch {
     0% {
-      clip-path: var(--slice-1);
-      transform: translate(-20px, -10px);
+        clip-path: var(--slice-1);
+        transform: translate(-20px, -10px);
     }
     10% {
-      clip-path: var(--slice-3);
-      transform: translate(10px, 10px);
+        clip-path: var(--slice-3);
+        transform: translate(10px, 10px);
     }
     20% {
-      clip-path: var(--slice-1);
-      transform: translate(-10px, 10px);
+        clip-path: var(--slice-1);
+        transform: translate(-10px, 10px);
     }
     30% {
-      clip-path: var(--slice-3);
-      transform: translate(0px, 5px);
+        clip-path: var(--slice-3);
+        transform: translate(0px, 5px);
     }
     40% {
-      clip-path: var(--slice-2);
-      transform: translate(-5px, 0px);
+        clip-path: var(--slice-2);
+        transform: translate(-5px, 0px);
     }
     50% {
-      clip-path: var(--slice-3);
-      transform: translate(5px, 0px);
+        clip-path: var(--slice-3);
+        transform: translate(5px, 0px);
     }
     60% {
-      clip-path: var(--slice-4);
-      transform: translate(5px, 10px);
+        clip-path: var(--slice-4);
+        transform: translate(5px, 10px);
     }
     70% {
-      clip-path: var(--slice-2);
-      transform: translate(-10px, 10px);
+        clip-path: var(--slice-2);
+        transform: translate(-10px, 10px);
     }
     80% {
-      clip-path: var(--slice-5);
-      transform: translate(20px, -10px);
+        clip-path: var(--slice-5);
+        transform: translate(20px, -10px);
     }
     90% {
-      clip-path: var(--slice-1);
-      transform: translate(-10px, 0px);
+        clip-path: var(--slice-1);
+        transform: translate(-10px, 0px);
     }
     100% {
-      clip-path: var(--slice-1);
-      transform: translate(0);
+        clip-path: var(--slice-1);
+        transform: translate(0);
     }
-  }
-    .warning{
-      text-align: center; 
-      font-weight: bold;
-      color: #9F6000;
-			background-color: #FEEFB3;
-			background-image: url('https://i.imgur.com/Z8q7ww7.png');
-      border: 1px solid;
-			margin: 10px 0px;
-			padding: 15px 10px 15px 50px;
-			background-repeat: no-repeat;
-			background-position: 10px center;
-    }
+}
+
+.warning {
+    text-align: center;
+    font-weight: bold;
+    color: #9F6000;
+    background-color: #FEEFB3;
+    background-image: url('https://i.imgur.com/Z8q7ww7.png');
+    border: 1px solid;
+    margin: 10px 0px;
+    padding: 15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h4 {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.form-group {
+    /* border: #000 solid 1px; */
+    padding: 4rem;
+    margin: 1rem;
+    border-radius: 8px;
+    z-index: 99;
+    -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+    -moz-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+    box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+    background-color: rgb(29, 27, 27);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    align-items: center;
+}
+
+
+/* .input-group {
+    display: flex;
+    width: 400px;
+    height: 150px;
+    justify-content: center;
+} */
+
+.input-group,
+input {
+    margin: 8px;
+    /* border: 1px solid #000; */
+}
+
+input {
+    width: 300px;
+    height: 60px;
+    border-radius: 4px;
+}

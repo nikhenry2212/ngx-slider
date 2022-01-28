@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -10,7 +12,9 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    NgxSliderModule
+    NgxSliderModule,
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

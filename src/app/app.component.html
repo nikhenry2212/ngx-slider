@@ -1,27 +1,48 @@
-<div class="custom-slider">
-  <ngx-slider 
-    [(value)]="value" 
-    [(highValue)]="maxValue"
-    [options]="options" 
-    (valueChange)="filter($event)">
-  </ngx-slider>
+<div class="col-4">
+    <div class="">
+        <form class="card" [formGroup]="cadastro" (ngSubmit)="cadastrar()">
+            <div class="card-body pb-4">
+                <div>
+                    <input required formControlName="title" type="text" placeholder="insira um titulo">
+                </div>
+                <div>
+                    <input required formControlName="AplicacaoInicial" type="number" placeholder="insira um valor">
+                </div>
+                <div>
+                    <input required formControlName="img" type="text" placeholder="insira uma url de img">
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </div>
+        </form>
+
+    </div>
 
 </div>
+
+<div class="custom-slider">
+    <ngx-slider [(value)]="value" [(highValue)]="maxValue" [options]="options" (valueChange)="filter($event)">
+    </ngx-slider>
+
+</div>
+
+
 <div class="container-button" *ngIf="objetoNovo < 1 ">
-  <p class="warning">Lista não encontrada</p>
-  <button  style="cursor: pointer;" (click)="reset()">Voltar</button>
+    <p class="warning">Lista não encontrada</p>
+    <button style="cursor: pointer;" (click)="reset()">Voltar</button>
 </div>
 <div class="row">
 
-  <form *ngFor="let value of objetoNovo"><br>
-    <div class="card">
-      <div class="container">
-        <img src={{value.img}} alt="perfil">
-        <h1>Dominio: {{value.title}}</h1>
-        <p>Aplicação Inicial: </p>
-        <p> {{ value.AplicacaoInicial | currency : "BRL"}}</p>
-      </div>
-  
-    </div>
-  </form>
+    <form *ngFor="let value of objetoNovo"><br>
+        <div class="card">
+            <div class="container">
+                <img src={{value.img}} alt="perfil">
+                <h1>Dominio: {{value.title}}</h1>
+                <p>Aplicação Inicial: </p>
+                <p> {{value.AplicacaoInicial | currency: 'BRL'}}</p>
+            </div>
+
+        </div>
+    </form>
 </div>
