@@ -13,12 +13,16 @@
                 </div>
             </div>
             <div>
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="submit" [disabled]="!cadastro.valid" class="btn btn-primary">Cadastrar</button>
             </div>
         </form>
 
     </div>
 
+</div>
+<!-- <ngbd-alert-closeable [type]="alert.type" (closed)="close(alert)">{{ alert.message }}</ngbd-alert-closeable> -->
+<div class="alert alert-info" role="alert">
+    A simple info alert—check it out!
 </div>
 
 <div class="custom-slider">
@@ -30,7 +34,7 @@
 
 <div class="container-button" *ngIf="objetoNovo < 1 ">
     <p class="warning">Lista não encontrada</p>
-    <button style="cursor: pointer;" (click)="reset()">Voltar</button>
+    <button class="btn btn-primary" style="cursor: pointer;" (click)="reset()">Voltar</button>
 </div>
 <div class="row">
 
