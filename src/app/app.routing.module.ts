@@ -8,6 +8,10 @@ const routes: Routes = [
     path: "products",
     component: AppComponent
   },
+  {
+  path: 'products',
+  component: AppComponent,
+},
 ]
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

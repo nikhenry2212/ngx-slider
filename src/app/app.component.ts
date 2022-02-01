@@ -3,6 +3,7 @@ import { Options } from '@angular-slider/ngx-slider';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ObjectModel } from './objeto.model';
 import { ProductService } from './product.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -12,18 +13,23 @@ import { ProductService } from './product.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  sliderForm: FormGroup = new FormGroup({
-    sliderControl: new FormControl([20, 80])
-  });
+  product: any = {id:''};
+
+
+  constructor(private productService: ProductService,
+    private router: Router,
+    private route: ActivatedRoute,) { }
 
   cadastro: FormGroup = new FormGroup({
     title: new FormControl('', [Validators.required]),
     AplicacaoInicial: new FormControl([Validators.required]),
     img: new FormControl('', [Validators.required])
   })
-  objetoNovo: any = []
 
-  constructor(private productService: ProductService) { }
+  objetoNovo: any = []
+  alertSuccess = false;
+  alertErro = false;
+  msgErro = ''
 
   objeto: ObjectModel[] = []
   listNull = {
@@ -31,6 +37,7 @@ export class AppComponent implements OnInit {
     AplicacaoInicial: "",
     img: "",
   }
+  produto!: ObjectModel;
 
   title = 'ngx-slider';
   stepValue: number[] = [1, 10, 100, 1000];
@@ -49,11 +56,52 @@ export class AppComponent implements OnInit {
   };
 
   cadastrar() {
-    this.productService.create(this.cadastro.value).subscribe(() => {
+    this.productService.create(this.cadastro.value).subscribe((res) => {
+      console.log(res);
+      
+      this.alertSuccess = true;
+      setTimeout(() => {
+        this.alertSuccess = false;
+      }, 3000)
       this.cadastro.setValue(this.listNull)
-      this.cadastro.reset(this.listNull)
+      this.cadastro.reset(this.listNull);
+      this.router.navigate(['/products']);
+
+    }, _erro => {
+      this.alertErro = true
+      setTimeout(() => {
+        this.alertErro = false;
+      }, 3000)
+      this.cadastro.setValue(this.listNull)
+      this.cadastro.reset(this.listNull);
+      this.router.navigate(['/']);
+    });
+
+  }
+
+  excluir() {
+    debugger
+    this.productService.delete(this.objetoNovo.id).subscribe(data => {
+      this.objetoNovo = console.log(data)
+      console.log(this.objetoNovo.id);
+    }, error => {
+      this.msgErro = error
+      this.alertErro = true;
+      setTimeout(() => {
+        this.alertErro = false;
+
+      }, 3000)
     })
   }
+
+  // pegandoId(){
+  //   const id:any = this.route.snapshot.paramMap.get('id');
+  //   console.log(id);
+
+  //   this.productService.readById(id).subscribe(product => {
+  //   this.produto = product;
+  //   })
+  // }
 
 
   getlist() {
@@ -90,12 +138,13 @@ export class AppComponent implements OnInit {
     this.maxValue = 1000000000;
   }
   ngOnInit() {
-    this.getlist()
+    this.getlist();
+    // const id:any = this.route.snapshot.paramMap.get('id')
+    // this.productService.readById(id).subscribe(product => {
+    // this.product = product;
+    // })
+    // console.log(this.pegandoId());
     this.objetoNovo = this.objeto;
-
-    // console.log('opções slider',this.options.scale)
-    // console.log('opções slider',this.options.)
-    // console.log(this.ticks)
 
   }
 }
