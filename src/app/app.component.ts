@@ -13,12 +13,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  product: any = {id:''};
+  product: any = { id: '' };
 
 
   constructor(private productService: ProductService,
     private router: Router,
-    private route: ActivatedRoute,) { }
+    private route: ActivatedRoute,
+    ) { }
 
   cadastro: FormGroup = new FormGroup({
     title: new FormControl('', [Validators.required]),
@@ -58,14 +59,14 @@ export class AppComponent implements OnInit {
   cadastrar() {
     this.productService.create(this.cadastro.value).subscribe((res) => {
       console.log(res);
-      
+
       this.alertSuccess = true;
       setTimeout(() => {
         this.alertSuccess = false;
       }, 3000)
       this.cadastro.setValue(this.listNull)
       this.cadastro.reset(this.listNull);
-      this.router.navigate(['/products']);
+      // this.router.navigate(['/products'])
 
     }, _erro => {
       this.alertErro = true
@@ -74,17 +75,19 @@ export class AppComponent implements OnInit {
       }, 3000)
       this.cadastro.setValue(this.listNull)
       this.cadastro.reset(this.listNull);
-      this.router.navigate(['/']);
+      // this.router.navigate(['/products'])
+
     });
 
   }
 
   excluir() {
-    debugger
+      debugger
     this.productService.delete(this.objetoNovo.id).subscribe(data => {
-      this.objetoNovo = console.log(data)
-      console.log(this.objetoNovo.id);
+      this.router.navigate([`/products`, this.objetoNovo.id, ]);
+      
     }, error => {
+      debugger
       this.msgErro = error
       this.alertErro = true;
       setTimeout(() => {
@@ -138,12 +141,14 @@ export class AppComponent implements OnInit {
     this.maxValue = 1000000000;
   }
   ngOnInit() {
-    this.getlist();
+    this.getlist(); 
     // const id:any = this.route.snapshot.paramMap.get('id')
     // this.productService.readById(id).subscribe(product => {
     // this.product = product;
     // })
     // console.log(this.pegandoId());
+    console.log(this.objetoNovo);
+
     this.objetoNovo = this.objeto;
 
   }

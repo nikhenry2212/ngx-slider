@@ -33,7 +33,8 @@ export class ProductService {
       }
       
       delete(id:string): Observable<any>{
-        const url = `${this.baseUrl}`;
+        debugger
+        const url = `${this.baseUrl}/${id}`;
         console.log(this.http.delete<any>(url).pipe(
           map(response => response),
           catchError(e => this.errorHandler(e))

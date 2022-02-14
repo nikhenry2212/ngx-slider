@@ -1,5 +1,5 @@
-<div class="col-4">
-    <div class="">
+<div class="row d-flex align-items-center justify-content-center">
+    <div class="row">
         <form class="card" [formGroup]="cadastro" (ngSubmit)="cadastrar()">
             <div class="card-body pb-4">
                 <div>
@@ -39,19 +39,21 @@
     <p class="warning">Lista não encontrada</p>
     <button class="btn btn-primary" style="cursor: pointer;" (click)="reset()">Voltar</button>
 </div>
-<div class="row">
+<div class="container-fluid my-5">
+    <div class="row d-flex align-items-center justify-content-center">
 
-    <form *ngFor="let value of objetoNovo"><br>
-        <div class="card">
-            <div class="container">
-                <img src={{value.img}} alt="perfil">
-                <h1>Dominio: {{value.title}}</h1>
-                <p>{{value.id}}</p>
-                <p>Aplicação Inicial: </p>
-                <p> {{value.AplicacaoInicial | currency: 'BRL'}}</p>
+        <form class="col-2" *ngFor="let value of objetoNovo"><br>
+            <div class="card">
+                <div class="col-12">
+                    <img class="card-img-top radius" src={{value.img}} alt=" perfil ">
+                    <h1>Dominio: {{value.title}}</h1>
+                    <p>{{value.id}}</p>
+                    <p>Aplicação Inicial: </p>
+                    <p> {{value.AplicacaoInicial | currency: 'BRL'}}</p>
+                </div>
+
+                <button (click)="excluir() " class="btn btn-danger ">excluir</button>
             </div>
-
-            <button (click)="excluir()" class="btn btn-danger">excluir</button>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

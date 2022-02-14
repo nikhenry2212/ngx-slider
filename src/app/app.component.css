@@ -11,8 +11,7 @@
     color: white;
 }
 
-img {
-    width: 150px;
+.radius {
     border-radius: 50%;
 }
 
