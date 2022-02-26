@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
     AplicacaoInicial: "",
     img: "",
   }
-  produto!: ObjectModel;
+  produto!: any;
 
   title = 'ngx-slider';
   stepValue: number[] = [1, 10, 100, 1000];
@@ -66,6 +66,7 @@ export class AppComponent implements OnInit {
       }, 3000)
       this.cadastro.setValue(this.listNull)
       this.cadastro.reset(this.listNull);
+      location.reload();
       // this.router.navigate(['/products'])
 
     }, _erro => {
@@ -83,8 +84,8 @@ export class AppComponent implements OnInit {
 
   excluir() {
       debugger
-    this.productService.delete(this.objetoNovo.id).subscribe(data => {
-      this.router.navigate([`/products`, this.objetoNovo.id, ]);
+    const id:any = this.pegandoId(this.objetoNovo.id)
+    this.productService.delete(id).subscribe(data => {
       
     }, error => {
       debugger
@@ -97,14 +98,14 @@ export class AppComponent implements OnInit {
     })
   }
 
-  // pegandoId(){
-  //   const id:any = this.route.snapshot.paramMap.get('id');
-  //   console.log(id);
+  pegandoId(id:any){
+    this.route.snapshot.paramMap.get(id);
+    console.log(id);
 
-  //   this.productService.readById(id).subscribe(product => {
-  //   this.produto = product;
-  //   })
-  // }
+    this.productService.readById(id).subscribe(product => {
+    this.produto = product.id;
+    })
+  }
 
 
   getlist() {
