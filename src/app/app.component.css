@@ -29,10 +29,14 @@
     flex-direction: row;
 }
 
-.container-button {
+.container-alert {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    padding: 8px;
+    justify-content: center;
+    /* border: 1px solid #0000; */
+    /* background-color: #212121; */
+    width: 100%;
 }
 
 #button-reset,

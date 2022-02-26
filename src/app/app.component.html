@@ -21,14 +21,20 @@
 
 </div>
 <!-- <ngbd-alert-closeable [type]="alert.type" (closed)="close(alert)">{{ alert.message }}</ngbd-alert-closeable> -->
-<div *ngIf="alertSuccess" class="alert alert-info" role="alert">
-    Seu produto foi inseerido com sucesso.😉
-</div>
-<div *ngIf="alertErro" class="alert alert-danger" role="alert">
-    Algo deu errado, tente novamente mais tarde.☹ {{msgErro}}
+
+<div class="container-alert">
+    <div *ngIf="alertSuccess" class="alert alert-success" role="alert">
+        Seu produto foi inseerido com sucesso.😉
+    </div>
+
+    <div *ngIf="alertErro" class="alert alert-danger" role="alert">
+        Algo deu errado, tente novamente mais tarde.☹ {{msgErro}}
+    </div>
 </div>
 
-<div class="custom-slider">
+
+
+<div class="col-12 pd-0 custom-slider">
     <ngx-slider [(value)]="value" [(highValue)]="maxValue" [options]="options" (valueChange)="filter($event)">
     </ngx-slider>
 
@@ -39,8 +45,9 @@
     <p class="warning">Lista não encontrada</p>
     <button class="btn btn-primary" style="cursor: pointer;" (click)="reset()">Voltar</button>
 </div>
-<div class="container-fluid my-5">
+<div class="container-fluid p-0">
     <div class="row d-flex align-items-center justify-content-center">
+        <!-- <div class=""> -->
 
         <form class="col-2" *ngFor="let value of objetoNovo"><br>
             <div class="card">
@@ -55,5 +62,6 @@
                 <button (click)="excluir() " class="btn btn-danger ">excluir</button>
             </div>
         </form>
+        <!-- </div> -->
     </div>
 </div>
