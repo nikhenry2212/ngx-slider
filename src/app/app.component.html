@@ -60,9 +60,24 @@
                     <p> {{value.AplicacaoInicial | currency: 'BRL'}}</p>
                 </div>
 
-                <button (click)="excluir() " class="btn btn-danger ">excluir</button>
+                <button (click)="excluir()" class="btn btn-danger ">excluir</button>
+                <button (click)=" open()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                   editar
+                  </button>
             </div>
         </form>
+        <div class="modal-header" *ngIf="openModal">
+            <h4 class="modal-title">Hi there!</h4>
+            <button type="button" class="btn-close" aria-label="Close"></button>
+
+            <div class="modal-body">
+                <p>Hello, {{name}}!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark">Close</button>
+            </div>
+        </div>
+
         <!-- </div> -->
     </div>
 </div>

@@ -34,7 +34,7 @@ export class ProductService {
       
       delete(id:string): Observable<any>{
         debugger
-        const url = `${this.baseUrl}/${id}`;
+        const url = `${this.baseUrl}?${id}`;
         console.log(this.http.delete<any>(url).pipe(
           map(response => response),
           catchError(e => this.errorHandler(e))
@@ -45,17 +45,17 @@ export class ProductService {
           catchError(e => this.errorHandler(e))
           )
       }
-      // readById(id: number): Observable<ObjectModel> {
-      //   const url = `${this.baseUrl}/${id}`;
-      //   console.log(this.http.get<ObjectModel>(url).pipe(
-      //     map(obj => obj),
-      //     catchError(e => this.errorHandler(e))
-      //   )
-      //   )
-      // return this.http.get<ObjectModel>(url).pipe(
-      //   map(obj => obj),
-      //   catchError(e => this.errorHandler(e))
-      // )}
+      readById(id: number): Observable<ObjectModel> {
+        const url = `${this.baseUrl}/?${id}`;
+        console.log(this.http.get<ObjectModel>(url).pipe(
+          map(obj => obj),
+          catchError(e => this.errorHandler(e))
+        )
+        )
+      return this.http.get<ObjectModel>(url).pipe(
+        map(obj => obj),
+        catchError(e => this.errorHandler(e))
+      )}
       errorHandler(e: any): Observable<any> {
         //showMessage(msg, isError = true) se tiver algum durante a req
         // vai mostra essa msg

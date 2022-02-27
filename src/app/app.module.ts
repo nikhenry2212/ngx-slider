@@ -4,6 +4,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 import { AppRoutingModule } from './app.routing.module';
 
+
+
 import { HttpClientModule } from '@angular/common/http';// import com dependencias para fazer req http
 
 import { AppComponent } from './app.component';
@@ -36,7 +38,7 @@ registerLocaleData(localePt);
   // exports: [NgbdAlertCloseable],
   providers: [{
     provide: LOCALE_ID,//declara o locale_id como provide
-    useValue:'pt-BR' // e o valor de linguagem q ele suporta
+    useValue:'pt-BR' ,// e o valor de linguagem q ele suporta
   }],
   bootstrap: [AppComponent]
 })

@@ -1,24 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Options } from '@angular-slider/ngx-slider';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ObjectModel } from './objeto.model';
 import { ProductService } from './product.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [NgbActiveModal]
 })
 export class AppComponent implements OnInit {
+
+  @Input() name:any;
   product: any = { id: '' };
 
 
   constructor(private productService: ProductService,
     private router: Router,
     private route: ActivatedRoute,
+    public modal: NgbActiveModal,
+    private modalService: NgbModal
     ) { }
 
   cadastro: FormGroup = new FormGroup({
@@ -31,6 +37,7 @@ export class AppComponent implements OnInit {
   alertSuccess = false;
   alertErro = false;
   msgErro = ''
+  openModal = false;
 
   objeto: ObjectModel[] = []
   listNull = {
@@ -55,6 +62,16 @@ export class AppComponent implements OnInit {
     }
 
   };
+  open() {
+    this.openModal=true;
+    const modalRef = this.modalService.open(this.openModal);
+    modalRef.componentInstance.name = 'World';
+  }
+  modalEdit(){
+    this.openModal=true;
+    console.log('aqui');
+    
+  }
 
   cadastrar() {
     this.productService.create(this.cadastro.value).subscribe((res) => {
